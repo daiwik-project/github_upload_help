@@ -109,3 +109,70 @@ If you prefer to avoid using a token every time, you can set up SSH authenticati
    ```
 
 Let me know if you need further clarification!
+
+-----------------------------------------------------------------------------------------------------------
+
+It looks like the cloning issue still persists, and I also see that the `mv` command failed because you used a placeholder path (`C:\path\to\your\test.csv`), which needs to be replaced with the actual path to your `test.csv` file.
+
+Let’s break down the steps to fix this:
+
+### **1. Cloning Issue: Invalid Path in Repository**
+The problem with the invalid path `Datasets/System-Threat-Forecaster /test.csv` is still preventing you from checking out the repository. 
+
+Unfortunately, there isn't much that can be done from your local machine because this issue stems from how the repository is structured on GitHub. The folder name `System-Threat-Forecaster ` has an extra space, which is causing issues during the checkout process.
+
+### **2. Solution: Rename Folder on GitHub**
+
+To resolve this issue, follow these steps:
+
+#### Step 1: **Rename the Folder on GitHub** (on the web)
+
+1. Go to the [GitHub repository](https://github.com/daiwik-project/Machine-Learning).
+2. Navigate to the **`Datasets`** folder in the repository.
+3. Find the folder `System-Threat-Forecaster ` (with the trailing space).
+4. **Rename** the folder to remove the trailing space. It should be renamed to `System-Threat-Forecaster` (no space).
+
+This should solve the invalid path issue and allow Git to clone the repository correctly.
+
+#### Step 2: **Clone the Repository Again**
+
+After renaming the folder on GitHub:
+
+```bash
+git clone https://github.com/daiwik-project/Machine-Learning.git
+```
+
+This should now work without the checkout error.
+
+### **3. Moving the `test.csv` File**
+
+Once the repository is cloned successfully, you can move your `test.csv` file into the correct folder. Here’s the correct command, but replace `C:\path\to\your\test.csv` with the actual path where your `test.csv` file is located:
+
+```bash
+mv C:\Actual\Path\to\test.csv D:\GITHUB\Machine-Learning\Datasets\System-Threat-Forecaster
+```
+
+For example, if your `test.csv` file is located in `C:\Users\Owner\Documents\test.csv`, the command would be:
+
+```bash
+mv C:\Users\Owner\Documents\test.csv D:\GITHUB\Machine-Learning\Datasets\System-Threat-Forecaster
+```
+
+### **4. Stage, Commit, and Push the Changes**
+
+Once the file is in the right place, you can stage, commit, and push the changes back to GitHub:
+
+```bash
+cd D:\GITHUB\Machine-Learning
+git add Datasets/System-Threat-Forecaster/test.csv
+git commit -m "Add test.csv to System-Threat-Forecaster"
+git push origin main
+```
+
+### Recap:
+- **Rename the folder** on GitHub (`System-Threat-Forecaster ` → `System-Threat-Forecaster`).
+- **Re-clone the repository** after renaming the folder.
+- **Move the `test.csv` file** to the appropriate folder.
+- **Stage, commit, and push** the file back to the repository.
+
+Let me know if these steps work!

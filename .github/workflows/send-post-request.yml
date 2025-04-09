@@ -1,0 +1,29 @@
+name: Send POST request
+
+on:
+  push:
+    branches:
+      - main  # You can change this to any branch, or add more branches
+
+jobs:
+  send_post_request:
+    runs-on: ubuntu-latest
+    
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      # Step 2: Wait for 1 minute
+      - name: Wait for 20 sec
+        run: sleep 20
+
+      # Step 3: Send POST request using curl
+      - name: Send POST request
+        run: |
+          curl -X POST \
+          "https://daiwik-tds-project-2.onrender.com/api/" \
+          -F "question=what is output of code -s?"
+          # curl -X POST https://daiwik-tds-project-2.onrender.com \
+          # -H "Content-Type: application/json" \
+          # -d '{"message": "This is a test POST request from GitHub Actions"}'

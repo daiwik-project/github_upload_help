@@ -16,7 +16,7 @@ jobs:
 
       # Step 2: Wait for 1 minute
       - name: Wait for 20 sec
-        run: sleep 20
+        run: sleep 40
 
       # Step 3: Send POST request using curl
       - name: Send POST request
